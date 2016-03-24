@@ -22,17 +22,21 @@ import javax.script.ScriptEngineManager;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.TreeMap;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
         Main main = new Main();
-        main.testPluginMethod();
-        main.testPythonPluginMethod();
-        main.testRubyPluginMethod();
-        main.testGroovyPluginMethod();
-        main.testJavaScriptPluginMethod();
+        main.testJavaPluginMethod();
+        main.testScalaPluginMethod();
+//        main.testPythonPluginMethod();
+//        main.testRubyPluginMethod();
+//        main.testGroovyPluginMethod();
+//        main.testJavaScriptPluginMethod();
     }
 
     private void testJavaScriptPluginMethod() {
@@ -222,10 +226,75 @@ public class Main {
         System.out.println("response = " + response);
     }
 
-    private void testPluginMethod() throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException {
+    private void testJavaPluginMethod() throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException {
         String response = "{\"error\":\"could not execute plugin\"}";
 
         String requestPluginName = "io.sato.UserDBPlugin";
+        String requestMethodName = "findLecturesOfUser";
+        String requestParameterString = "[{\"name\":\"john\",\"number\":220033}]";
+
+        List<TreeMap> requestParameters = new Genson().deserialize(requestParameterString, new GenericType<List<TreeMap>>() {
+        });
+
+        Object[] parametersArray = null;
+        Method callMethod = null;
+        Class<? extends Plugin> pluginClass = Class.forName(requestPluginName).asSubclass(Plugin.class);
+        Plugin plugin = pluginClass.newInstance();
+        for (Method method : pluginClass.getMethods()) {
+            if (method.getName().equals(requestMethodName)
+                    && method.getParameterCount() == requestParameters.size()) {
+                callMethod = method;
+                break;
+            }
+        }
+
+        if (callMethod != null) {
+            List<Object> parameterList = new ArrayList<>();
+            Class<?>[] parameterTypes = callMethod.getParameterTypes();
+            for (int i = 0; i < requestParameters.size(); i++) {
+                String parameterString = new Genson().serialize(requestParameters.get(i));
+                Object parameterObject = new Genson().deserialize(parameterString, parameterTypes[i]);
+                parameterList.add(parameterObject);
+            }
+            parametersArray = parameterList.toArray();
+            Object output = callMethod.invoke(plugin, parametersArray);
+            response = new Genson().serialize(output);
+
+        } else if (requestParameters.size() == 1) {
+            TreeMap map = requestParameters.get(0);
+            for (Method method : pluginClass.getMethods()) {
+                if (method.getName().equals(requestMethodName)
+                        && method.getParameterCount() == map.size()) {
+                    callMethod = method;
+                    break;
+                }
+            }
+            if (callMethod != null) {
+                List<Object> parameterList = new ArrayList<>();
+                Class<?>[] parameterTypes = callMethod.getParameterTypes();
+                int i = 0;
+                for (Object key : map.keySet()) {
+                    String parameterString = new Genson().serialize(map.get(key));
+                    Object parameterObject = new Genson().deserialize(parameterString, parameterTypes[i]);
+                    parameterList.add(parameterObject);
+                    i++;
+                }
+                parametersArray = parameterList.toArray();
+            }
+        }
+
+        if (callMethod != null) {
+            Object output = callMethod.invoke(plugin, parametersArray);
+            response = new Genson().serialize(output);
+        }
+
+        System.out.println("response = " + response);
+    }
+
+    private void testScalaPluginMethod() throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException {
+        String response = "{\"error\":\"could not execute plugin\"}";
+
+        String requestPluginName = "io.sato.UserDBPluginScala";
         String requestMethodName = "findLecturesOfUser";
         String requestParameterString = "[{\"name\":\"john\",\"number\":220033}]";
 
