@@ -33,10 +33,10 @@ public class Main {
         Main main = new Main();
         main.testJavaPluginMethod();
         main.testScalaPluginMethod();
-//        main.testPythonPluginMethod();
-//        main.testRubyPluginMethod();
-//        main.testGroovyPluginMethod();
-//        main.testJavaScriptPluginMethod();
+        main.testPythonPluginMethod();
+        main.testRubyPluginMethod();
+        main.testGroovyPluginMethod();
+        main.testJavaScriptPluginMethod();
     }
 
     private void testJavaScriptPluginMethod() {
