@@ -161,6 +161,7 @@
             <artifactId>genson</artifactId>
             <version>1.3</version>
         </dependency>
+        <!-- Programming languages support -->
         <dependency>
             <groupId>org.python</groupId>
             <artifactId>jython-standalone</artifactId>
@@ -180,6 +181,12 @@
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
             <version>2.11.7</version>
+        </dependency>
+        <!-- Event Dispatch Library -->
+        <dependency>
+            <groupId>com.fererlab</groupId>
+            <artifactId>event-dispatch</artifactId>
+            <version>0.0.1</version>
         </dependency>
 
     </dependencies>

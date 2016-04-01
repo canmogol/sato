@@ -4,6 +4,7 @@ import com.owlike.genson.GenericType;
 import com.owlike.genson.Genson;
 import groovy.lang.GroovyClassLoader;
 import groovy.lang.GroovyObject;
+import io.sato.internal.app.SatoApp;
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import org.jruby.Ruby;
 import org.jruby.RubyObject;
@@ -29,7 +30,11 @@ import java.util.TreeMap;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
+        SatoApp satoApp = SatoApp.getInstance();
+    }
+
+    public static void main2(String[] args) throws Exception {
         Main main = new Main();
         main.testJavaPluginMethod();
         main.testScalaPluginMethod();

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration>
+    <properties>
+        <entry>
+            <key>key1</key>
+            <value>value1</value>
+        </entry>
+        <entry>
+            <key>key2</key>
+            <value>value2</value>
+        </entry>
+    </properties>
+    <services>io.sato.internal.services.boot.BootService</services>
+    <services>io.sato.internal.services.config.ConfigurationService</services>
+    <services>io.sato.internal.services.daemon.DaemonService</services>
+    <services>io.sato.internal.services.file.FileSystemService</services>
+    <services>io.sato.internal.services.metrics.MetricsService</services>
+    <services>io.sato.internal.services.packaging.PackagingService</services>
+    <services>io.sato.internal.services.plugin.PluginService</services>
+    <services>io.sato.internal.services.process.ProcessService</services>
+    <services>io.sato.internal.services.webserver.WebServerService</services>
+</configuration>

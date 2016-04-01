@@ -1,4 +1,11 @@
 package io.sato.internal.services.plugin;
 
-public class PluginService {
+import com.fererlab.dispatch.service.AbstractService;
+
+import java.util.HashSet;
+
+public class PluginService extends AbstractService {
+    public PluginService() {
+        super(new HashSet<>());
+    }
 }

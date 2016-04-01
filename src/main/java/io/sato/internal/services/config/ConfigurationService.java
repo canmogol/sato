@@ -1,4 +1,11 @@
 package io.sato.internal.services.config;
 
-public class ConfigurationService {
+import com.fererlab.dispatch.service.AbstractService;
+
+import java.util.HashSet;
+
+public class ConfigurationService extends AbstractService {
+    public ConfigurationService() {
+        super(new HashSet<>());
+    }
 }
