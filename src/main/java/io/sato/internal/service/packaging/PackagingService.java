@@ -1,4 +1,4 @@
-package io.sato.internal.services.packaging;
+package io.sato.internal.service.packaging;
 
 import com.fererlab.dispatch.service.AbstractService;
 

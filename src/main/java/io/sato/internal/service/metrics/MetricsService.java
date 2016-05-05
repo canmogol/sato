@@ -1,4 +1,4 @@
-package io.sato.internal.services.metrics;
+package io.sato.internal.service.metrics;
 
 import com.fererlab.dispatch.service.AbstractService;
 

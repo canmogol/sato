@@ -11,9 +11,9 @@ public class SatoLogFormatter extends SimpleFormatter {
     public synchronized String format(LogRecord record) {
         StringBuilder stringBuilder = new StringBuilder();
         // date
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd,yyyy HH:mm");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date(record.getMillis());
-        // add gam logger key
+        // add logger key
         stringBuilder.append("[SATO] ");
         // current date time
         stringBuilder.append("[");

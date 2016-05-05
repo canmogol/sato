@@ -12,23 +12,19 @@ import java.util.concurrent.Executors;
 public class SatoApp {
 
     private ExecutorService executorService = Executors.newFixedThreadPool(1);
-    private static SatoApp instance = null;
     private Configuration configuration;
 
+    private static class SatoAppInstance {
+        private static SatoApp INSTANCE = new SatoApp();
+    }
+
     private SatoApp() {
+        configure();
+        start();
     }
 
     public static SatoApp getInstance() {
-        if (instance == null) {
-            synchronized (SatoApp.class) {
-                if (instance == null) {
-                    instance = new SatoApp();
-                    instance.configure();
-                    instance.start();
-                }
-            }
-        }
-        return instance;
+        return SatoAppInstance.INSTANCE;
     }
 
     private void configure() {

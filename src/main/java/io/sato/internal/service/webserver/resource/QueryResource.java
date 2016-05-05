@@ -1,4 +1,4 @@
-package io.sato.internal.services.webserver.resource;
+package io.sato.internal.service.webserver.resource;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;

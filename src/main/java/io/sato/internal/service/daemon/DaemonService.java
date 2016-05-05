@@ -1,13 +1,11 @@
-package io.sato.internal.services.boot;
+package io.sato.internal.service.daemon;
 
 import com.fererlab.dispatch.service.AbstractService;
 
 import java.util.HashSet;
 
-public class BootService extends AbstractService {
-
-    public BootService() {
+public class DaemonService extends AbstractService {
+    public DaemonService() {
         super(new HashSet<>());
     }
-
 }
