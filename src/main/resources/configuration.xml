@@ -10,6 +10,7 @@
             <value>value2</value>
         </entry>
     </properties>
+    <services>io.sato.internal.service.auth.AuthService</services>
     <services>io.sato.internal.service.boot.BootService</services>
     <services>io.sato.internal.service.config.ConfigurationService</services>
     <services>io.sato.internal.service.daemon.DaemonService</services>

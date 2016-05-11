@@ -12,9 +12,14 @@ import io.sato.internal.service.boot.log.BootServiceLogger;
 
 import java.util.HashSet;
 
+/**
+ * Expected functionality:
+ * reboot and halt the system
+ */
 public class BootService extends AbstractService {
 
     private BootServiceLogger logger = new BootServiceLogger();
+    private BootCommandFactory factory = BootCommandFactory.getBootCommandFactory();
 
     public BootService() {
         super(new HashSet<Class<? extends Event>>() {{
@@ -25,7 +30,7 @@ public class BootService extends AbstractService {
 
     public void handleEvent(RebootEvent event) {
         logger.willHandleRebootEvent(event.toString());
-        Command command = BootCommandFactory.getBootCommandFactory().getRebootCommand();
+        Command command = factory.getRebootCommand();
         Invoker invoker = new Invoker();
         invoker.execute(command);
         broadcast(new ShutdownEvent());
@@ -33,7 +38,7 @@ public class BootService extends AbstractService {
 
     public void handleEvent(HaltEvent event) {
         logger.willHandleHaltEvent(event.toString());
-        Command command = BootCommandFactory.getBootCommandFactory().getShutdownCommand();
+        Command command = factory.getShutdownCommand();
         Invoker invoker = new Invoker();
         invoker.execute(command);
         broadcast(new ShutdownEvent());
