@@ -16,7 +16,7 @@ public class SatoLogger {
             logger.removeHandler(handler);
         }
         // add new console handler
-        System.out.println("adding a ConsoleHandler with GamLogFormatter");
+        System.out.println("adding a ConsoleHandler with SatoLogFormatter");
         ConsoleHandler consoleHandler = new ConsoleHandler();
         consoleHandler.setFormatter(new SatoLogFormatter());
         logger.addHandler(consoleHandler);
