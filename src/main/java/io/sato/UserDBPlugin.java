@@ -1,6 +1,8 @@
 package io.sato;
 
 
+import io.sato.plugin.Plugin;
+
 import java.util.Map;
 import java.util.TreeMap;
 

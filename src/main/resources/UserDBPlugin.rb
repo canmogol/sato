@@ -1,5 +1,5 @@
 class UserDBPlugin
-  include Java::io.sato.Plugin
+  include Java::io.sato.plugin.Plugin
 
   def findLecturesOfUser(name, age)
     puts "Ruby Hello #{name}, #{age}"

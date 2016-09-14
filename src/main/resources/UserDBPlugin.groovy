@@ -1,4 +1,4 @@
-import io.sato.Plugin
+import io.sato.plugin.Plugin
 
 class UserDBPlugin implements Plugin {
 

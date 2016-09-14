@@ -2,6 +2,8 @@ package io.sato
 
 import java.util
 
+import io.sato.plugin.Plugin
+
 import scala.collection.JavaConversions._
 import scala.collection.immutable.HashMap
 

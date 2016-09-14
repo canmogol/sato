@@ -1,4 +1,4 @@
-from io.sato import Plugin
+from io.sato.plugin import Plugin
 
 
 class UserDBPlugin(Plugin):
