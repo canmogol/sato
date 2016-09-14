@@ -10,13 +10,14 @@
             <value>value2</value>
         </entry>
     </properties>
-    <services>io.sato.service.boot.BootService</services>
-    <services>io.sato.service.config.ConfigurationService</services>
-    <services>io.sato.service.daemon.DaemonService</services>
-    <services>io.sato.service.file.FileSystemService</services>
-    <services>io.sato.service.metrics.MetricsService</services>
-    <services>io.sato.service.packaging.PackagingService</services>
-    <services>io.sato.service.plugin.PluginService</services>
-    <services>io.sato.service.process.ProcessService</services>
-    <services>io.sato.service.webserver.WebServerService</services>
+    <services>io.sato.internal.service.auth.AuthService</services>
+    <services>io.sato.internal.service.boot.BootService</services>
+    <services>io.sato.internal.service.config.ConfigurationService</services>
+    <services>io.sato.internal.service.daemon.DaemonService</services>
+    <services>io.sato.internal.service.file.FileSystemService</services>
+    <services>io.sato.internal.service.metrics.MetricsService</services>
+    <services>io.sato.internal.service.packaging.PackagingService</services>
+    <services>io.sato.internal.service.plugin.PluginService</services>
+    <services>io.sato.internal.service.process.ProcessService</services>
+    <services>io.sato.internal.service.webserver.WebServerService</services>
 </configuration>

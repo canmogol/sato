@@ -11,4 +11,9 @@ public class BootServiceLogger extends BaseLogger {
     public void willHandleHaltEvent(String event) {
         log("HaltEvent: " + event);
     }
+
+    public void unknownOSCommandExecuted(String commandName) {
+        error("Command '" + commandName + "' on unknown Operating System executed");
+    }
+
 }
