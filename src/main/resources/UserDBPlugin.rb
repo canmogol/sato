@@ -10,5 +10,9 @@ class UserDBPlugin
     'Ruby UserDBPlugin'
   end
 
+  def execute(objects)
+    "{}"
+  end
+
 end
 UserDBPlugin.new

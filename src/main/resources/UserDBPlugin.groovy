@@ -13,6 +13,11 @@ class UserDBPlugin implements Plugin {
     }
 
     @Override
+    String execute(Object... objects) {
+        return "{}";
+    }
+
+    @Override
     String documentation() {
         return "Groovy UserDBPlugin"
     }

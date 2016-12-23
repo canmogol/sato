@@ -14,4 +14,7 @@ class UserDBPluginScala extends Plugin {
   }
 
   override def documentation(): String = "Scala UserDBPluginScala"
+
+  override def execute(objects: AnyRef*): String = "{}";
+
 }
