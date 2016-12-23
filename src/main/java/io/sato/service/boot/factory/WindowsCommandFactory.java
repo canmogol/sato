@@ -1,7 +1,7 @@
-package io.sato.internal.service.boot.factory;
+package io.sato.service.boot.factory;
 
-import io.sato.internal.command.Command;
-import io.sato.internal.command.GenericCommand;
+import io.sato.command.Command;
+import io.sato.command.GenericCommand;
 
 public class WindowsCommandFactory extends BootCommandFactory {
 

@@ -2,10 +2,13 @@ package io.sato.app;
 
 import com.fererlab.dispatch.service.EventDispatcher;
 import com.fererlab.dispatch.util.Configuration;
+import io.sato.service.boot.event.RebootEvent;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 import java.io.InputStream;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -15,33 +18,43 @@ public class SatoApp {
     private Configuration configuration;
 
     private static class SatoAppInstance {
-        private static SatoApp INSTANCE = new SatoApp();
+	private static SatoApp INSTANCE = new SatoApp();
+
+	private SatoAppInstance() {
+	}
     }
 
     private SatoApp() {
-        configure();
-        start();
+	configure();
+	start();
     }
 
     public static SatoApp getInstance() {
-        return SatoAppInstance.INSTANCE;
+	return SatoAppInstance.INSTANCE;
     }
 
     private void configure() {
-        // discover service classes
-        try {
-            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("configuration.xml");
-            JAXBContext jaxbContext = JAXBContext.newInstance(Configuration.class);
-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            configuration = (Configuration) jaxbUnmarshaller.unmarshal(inputStream);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+	// discover service classes
+	try {
+	    InputStream inputStream = getClass().getClassLoader().getResourceAsStream("configuration.xml");
+	    JAXBContext jaxbContext = JAXBContext.newInstance(Configuration.class);
+	    Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+	    configuration = (Configuration) jaxbUnmarshaller.unmarshal(inputStream);
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
     }
 
     private void start() {
-        EventDispatcher eventDispatcher = new EventDispatcher(configuration);
-        executorService.execute(eventDispatcher);
+	EventDispatcher eventDispatcher = new EventDispatcher(configuration);
+	executorService.execute(eventDispatcher);
+	Timer timer = new Timer();
+	timer.schedule(new TimerTask() {
+	    @Override
+	    public void run() {
+		eventDispatcher.handleEvent(new RebootEvent());
+	    }
+	}, 2000);
     }
 
 }

@@ -1,4 +1,4 @@
-package io.sato.internal.service.auth;
+package io.sato.service.auth;
 
 import com.fererlab.dispatch.service.AbstractService;
 

@@ -1,27 +1,23 @@
 package io.sato.logging;
 
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Handler;
-import java.util.logging.Logger;
+import com.fererlab.dispatch.log.DefaultLogging;
+import com.fererlab.dispatch.log.Logging;
 
-public class SatoLogger {
+public abstract class SatoLogger implements Logging {
 
-    public static Logger getLogger(String name) {
-        Logger logger = Logger.getLogger(name);
-        // do not use parent handlers
-        logger.setUseParentHandlers(false);
-        // if there are any, remove them
-        for (Handler handler : logger.getHandlers()) {
-            System.out.println("removing already registered handler: " + handler);
-            logger.removeHandler(handler);
-        }
-        // add new console handler
-        System.out.println("adding a ConsoleHandler with SatoLogFormatter");
-        ConsoleHandler consoleHandler = new ConsoleHandler();
-        consoleHandler.setFormatter(new SatoLogFormatter());
-        logger.addHandler(consoleHandler);
-        return logger;
+    private Logging logging;
+
+    public SatoLogger(Class<?> owner) {
+	logging = new DefaultLogging(owner, new SatoLogFormatter());
     }
 
+    public void log(String log) {
+	logging.log(log);
+    }
+
+    @Override
+    public void error(String log) {
+	logging.error(log);
+    }
 
 }

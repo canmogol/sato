@@ -1,4 +1,4 @@
-package io.sato.internal.command;
+package io.sato.command;
 
 public interface Command {
 

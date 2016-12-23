@@ -1,4 +1,4 @@
-package io.sato.internal.service.boot.factory;
+package io.sato.service.boot.factory;
 
 public class LinuxCommandFactory extends UnixCommandFactory {
 }

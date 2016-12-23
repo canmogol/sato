@@ -1,8 +1,8 @@
-package io.sato.internal.service.boot.factory;
+package io.sato.service.boot.factory;
 
-import io.sato.internal.command.Command;
-import io.sato.internal.service.boot.command.UnknownRebootCommand;
-import io.sato.internal.service.boot.command.UnknownShutdownCommand;
+import io.sato.command.Command;
+import io.sato.service.boot.command.UnknownRebootCommand;
+import io.sato.service.boot.command.UnknownShutdownCommand;
 
 public class UnknownBootCommandFactory extends BootCommandFactory {
 

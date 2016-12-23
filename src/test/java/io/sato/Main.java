@@ -36,10 +36,10 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception {
-        Main main = new Main();
+        SatoApp satoApp = SatoApp.getInstance();
 //        main.testJavaPluginMethod();
 //        main.testScalaPluginMethod();
-        main.testPythonPluginMethod();
+//        main.testPythonPluginMethod();
 //        main.testRubyPluginMethod();
 //        main.testGroovyPluginMethod();
 //        main.testJavaScriptPluginMethod();

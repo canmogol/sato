@@ -1,6 +1,6 @@
-package io.sato.internal.service.boot.factory;
+package io.sato.service.boot.factory;
 
-import io.sato.internal.command.Command;
+import io.sato.command.Command;
 
 public abstract class BootCommandFactory {
 

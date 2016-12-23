@@ -1,4 +1,4 @@
-package io.sato.internal.service.usergroup;
+package io.sato.service.usergroup;
 
 import com.fererlab.dispatch.service.AbstractService;
 
