@@ -14,8 +14,11 @@ public class SatoApp {
     private ExecutorService executorService = Executors.newFixedThreadPool(1);
     private Configuration configuration;
 
-    private static class SatoAppInstance {
-        private static SatoApp INSTANCE = new SatoApp();
+    private final static class SatoAppInstance {
+        private final static SatoApp INSTANCE = new SatoApp();
+
+        private SatoAppInstance() {
+        }
     }
 
     private SatoApp() {
