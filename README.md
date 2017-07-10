@@ -1,3 +1,3 @@
 # sato - system administration tool
-Event Driven Daemon with loadable plugins
+System administration tool with loadable plugins
 
