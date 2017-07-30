@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.sato</groupId>
+    <artifactId>sato-metrics</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>sato-metrics</name>
+    <description>SATO - System Metrics Module</description>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://github.com/canmogol/sato/blob/master/LICENSE</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Can A. MOGOL</name>
+            <email>canmogol@gmail.com</email>
+            <organization>FererLab</organization>
+            <organizationUrl>http://5470.ws/</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/canmogol/sato</url>
+        <connection>scm:git@github.com:canmogol/sato.git</connection>
+        <developerConnection>scm:git@github.com:canmogol/sato.git</developerConnection>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- JAVA VERSION -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <!-- VERSIONS -->
+        <sato.common.version>1.0.0</sato.common.version>
+        <junit.version>4.12</junit.version>
+        <jbehave.version>4.1.1</jbehave.version>
+        <maven.compiler.plugin.version>3.6.1</maven.compiler.plugin.version>
+        <jacoco.maven.plugin>0.7.9</jacoco.maven.plugin>
+        <maven.surefire.plugin.version>2.20</maven.surefire.plugin.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <!-- java source compile, expected to set to at least 1.8 -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+            <!-- test report - jacoco -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.maven.plugin}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- surefire integration tests as BDD stories -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>integration-test</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                            <includes>
+                                <include>**/story/*.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <dependencies>
+
+        <!-- PACK WITH -->
+
+        <!-- TEST -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jbehave</groupId>
+            <artifactId>jbehave-core</artifactId>
+            <version>${jbehave.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- PROVIDED -->
+        <dependency>
+            <groupId>io.sato</groupId>
+            <artifactId>sato-common</artifactId>
+            <version>${sato.common.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>
